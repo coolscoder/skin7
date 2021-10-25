@@ -1,211 +1,67 @@
 <template>
   <div container>
-    <div data-container>
-      <img data-avatar :src="linkdrip.profile.image" />
-      <h1 data-username v-text="linkdrip.profile.name.text"></h1>
-      <p data-description v-text="linkdrip.profile.description.text"></p>
-      <ul data-links>
-        <li
-          data-link-container
-          v-for="(link, index) in linkdrip.links"
-          v-bind:key="index"
-          v-on:click = "handleExtend(index)"
-        >
-          <LinkItem :link="link" />
-          <ExtendedItem v-if="linkdrip.extends[index]" :extends="link.extends" />
-        </li>
-      </ul>
+    <div avatar-container>
+      <img avatar src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxjb2xsZWN0aW9uLXBhZ2V8MXw3NjA4Mjc3NHx8ZW58MHx8fHw%3D&w=1000&q=80" >
+    </div>
+    <div main>
+      <div v-for="(link, index) in links" v-bind:key="index">
+        dddd
+      </div>
     </div>
   </div>
 </template>
-
 <script>
-  import LinkItem from './components/LinkItem.vue'
-  import ExtendedItem from './components/ExtendedItem.vue'
 
   export default {
     name: 'App',
-    components: {
-      LinkItem,
-      ExtendedItem,
-    },
     data: () => ({
-      search: new URLSearchParams(window.location.search),
-      visible: false,
-      linktree: false,
-      linkdrip:{
-        skin: 'SKIN_NAME',
-        profile:{
-          image: "https://smhlancers.org/wp-content/uploads/2016/06/profile-placeholder-300x300.png",
-          name:{
-            text: "John Doe"
-          },
-          description: {
-            text: "This is my description"
-          }
+      links: [
+        {
+          label: 'Tictok',
+          links: 'google.com',
         },
-        extends: [],
-        links: [
-          {
-            url: "http://google.com",
-            label: "This is a link",
-            extends: [
-              {
-                url: "http://google.com",
-                label: "This is another link",
-              },
-              {
-                url: "http://google.com",
-                label: "This is another link",
-              },
-              {
-                url: "http://google.com",
-                label: "This is another link",
-              },
-            ]
-          },
-          {
-            url: "http://google.com",
-            label: "This is a link",
-            extends: [
-              {
-                url: "http://google.com",
-                label: "This is another link",
-              },
-              {
-                url: "http://google.com",
-                label: "This is another link",
-              },
-              {
-                url: "http://google.com",
-                label: "This is another link",
-              },
-            ]
-          },
-          {
-            url: "http://google.com",
-            label: "This is a link",
-            extends: [
-              {
-                url: "http://google.com",
-                label: "This is another link",
-              },
-              {
-                url: "http://google.com",
-                label: "This is another link",
-              },
-              {
-                url: "http://google.com",
-                label: "This is another link",
-              },
-            ]
-          },
-          {
-            url: "http://google.com",
-            label: "This is a link",
-            extends: [
-              {
-                url: "http://google.com",
-                label: "This is another link",
-              },
-              {
-                url: "http://google.com",
-                label: "This is another link",
-              },
-              {
-                url: "http://google.com",
-                label: "This is another link",
-              },
-            ]
-          }
-        ]
-      }
-    }),
-    created() {
-      this.$data.linkdrip.links.forEach(() => {
-        this.$data.linkdrip.extends.push(false)
-      });
-    },
-    methods: {
-      handleExtend(index) {
-        if(this.$data.linkdrip.extends[index]) {
-          this.$data.linkdrip.extends[index] = false
-        } else {
-          this.$data.linkdrip.extends[index] = true
-        }
-      }
-    },
+        {
+          label: 'instargram',
+          links: 'google.com',
+        },
+        {
+          label: 'Snapchat',
+          links: 'google.com',
+        },
+        {
+          label: 'Twitter',
+          links: 'google.com',
+        },
+      ]
+  })
   }
 </script>
 
 <style lang="scss">
   body {
-    background: #000;
+    background: #2c6622;
     color: #fff;
     font-family: Helvetica;
     text-align: center;
   }
   [container] {
-    padding: 10px;
-    background-color: #fff;
-    border-radius: 20px;
+    padding: 20px 15px;
   }
-	[data-container] {
-		margin: 10px;
-		padding: 0 1rem;
-    background-color: #000;
-    border: 1px solid white;
-    border-radius: 20px;
-	}
-	[data-avatar]{
-		position: relative;
-		z-index: 5;
-		width: 100%;
-		max-width: 5.5rem;
-		margin: 3rem auto 0.5rem;
-		border-radius: 100rem;
-	}
-	[data-username] {
-		position: relative;
-		z-index: 5;
-		font-size: 1.3rem;
-		margin: 0 0 0.25rem;
-	}
-	[data-description]{
-		position: relative;
-		z-index: 5;
-		font-size: 1rem;
-	}
-	[data-links]{
-		margin: 2rem 0;
-    padding: 0;
-		li{
-			margin-top: 1rem;
-      border: 1px solid #fff; 
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      cursor: pointer;
-      border-radius: 6px;
-			a {
-				display: block;
-				font-size: 1rem;
-				position: relative;
-				color: inherit;
-        margin: 1rem 0;
-				span{
-					position: relative;
-					z-index: 1;
-				}
-				[data-button-icon]{
-					font-size: 1.3rem;
-					color: #fff;
-					position: absolute;
-					top: 50%;
-					left: 1.5rem;
-					transform: translate3d(0,-50%,0);
-				}
-			}
-		}
+  [avatar-container] {
+    height: 40vh;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+  }
+  [avatar] {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+    }
+  [main] {
+    flex: 1;
+    font-family: new-spirit, serif;
+    font-weight: 500;
+    font-style: normal;
   }
 </style>
