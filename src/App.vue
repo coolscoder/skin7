@@ -7,7 +7,11 @@
       <div v-for="(link, index) in links" v-bind:key="index">
         <a :href="link.url" target="_blank" v-text="link.label" />
       </div>
-      <p description v-text="description"></p>
+      <p v-text="description"></p>
+    </div>
+    <div landing-img-container>
+      <img landingimg src="./assets/tape.png" />
+      <p name v-text="name" />
     </div>
   </div>
 </template>
@@ -17,6 +21,7 @@
     name: 'App',
     data: () => ({
       url: "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxjb2xsZWN0aW9uLXBhZ2V8MXw3NjA4Mjc3NHx8ZW58MHx8fHw%3D&w=1000&q=80",
+      name: 'WEBBENDR',
       links: [
         {
           label: 'Tictok',
@@ -44,8 +49,9 @@
   body {
     background: #2c6622;
     color: #fff;
-    font-family: Helvetica;
+    font-family: 'Courier New';
     text-align: center;
+    margin: 0;
   }
   [container] {
     padding: 15px;
@@ -60,9 +66,9 @@
       width: 150px;
       height: 150px;
       border-radius: 50%;
+      margin-right: -15px;
     }
   [main] {
-    flex: 1;
     text-align: left;
     a {
       color: #e8e3dd;
@@ -72,7 +78,18 @@
       font-size: 42px;
     }
   }
-  [description] {
-    font-family: 'Courier New';
+  [landing-img-container] {
+    position: absolute;
+    top: -50px;
+    left: -100px;
+  }
+  [landingimg] {
+    width: 380px;
+    height: 240px;
+    transform: rotate(5deg);
+  }
+  [name] {
+    transform: rotate(-85deg);
+    margin: -120px 25px 0 0;
   }
 </style>
