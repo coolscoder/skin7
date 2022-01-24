@@ -45,7 +45,7 @@
   }
 </script>
 
-<style lang="scss">
+<style>
   body {
     background: #2c6622;
     color: #fff;
@@ -70,13 +70,13 @@
     }
   [main] {
     text-align: left;
-    a {
-      color: #e8e3dd;
-      font-family: new-spirit, serif;
-      font-weight: 500;
-      font-style: normal;
-      font-size: 42px;
-    }
+  }
+  a {
+    color: #e8e3dd;
+    font-family: new-spirit, serif;
+    font-weight: 500;
+    font-style: normal;
+    font-size: 42px;
   }
   [landing-img-container] {
     position: absolute;
